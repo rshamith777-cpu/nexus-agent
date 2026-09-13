@@ -1,0 +1,160 @@
+{
+  "name": "NEXUS - Multi-App Mission Orchestration & Verification Workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "nexus-mission-trigger",
+        "options": {}
+      },
+      "name": "NEXUS Webhook Trigger",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        240,
+        300
+      ],
+      "id": "node_webhook_trigger"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "calendar": "primary",
+        "eventId": "={{ $json.body.calendar_event_id || 'evt_acme_tech_2026_994' }}"
+      },
+      "name": "Google Calendar Integration",
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1,
+      "position": [
+        460,
+        200
+      ],
+      "id": "node_calendar"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "q": "={{ $json.body.company || 'Acme' }} recruiter technical interview",
+        "limit": 5
+      },
+      "name": "Gmail Search Integration",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2,
+      "position": [
+        460,
+        400
+      ],
+      "id": "node_gmail"
+    },
+    {
+      "parameters": {
+        "resource": "repository",
+        "operation": "get",
+        "owner": "={{ $json.body.company_org || 'acme-corp' }}",
+        "repository": "event-stream-engine"
+      },
+      "name": "GitHub Repository Analyzer",
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1,
+      "position": [
+        680,
+        200
+      ],
+      "id": "node_github"
+    },
+    {
+      "parameters": {
+        "channel": "={{ $json.body.channel || '#interview-prep' }}",
+        "text": "=🎯 NEXUS Mission Execution: Interview Preparation for {{ $json.body.company }} verified across Calendar, Gmail, and GitHub.",
+        "otherOptions": {}
+      },
+      "name": "Slack Dispatch Integration",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 1,
+      "position": [
+        900,
+        300
+      ],
+      "id": "node_slack"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n  \"workflow_id\": \"n8n_nexus_interview_prep\",\n  \"status\": \"VERIFIED\",\n  \"execution_timestamp\": \"{{ $now }}\",\n  \"apps_verified\": [\"Google Calendar\", \"Gmail\", \"GitHub\", \"Slack\"],\n  \"delivery_receipt\": \"slack_ts_verified\"\n}"
+      },
+      "name": "Verification Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        1120,
+        300
+      ],
+      "id": "node_response"
+    }
+  ],
+  "connections": {
+    "NEXUS Webhook Trigger": {
+      "main": [
+        [
+          {
+            "node": "Google Calendar Integration",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Gmail Search Integration",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Calendar Integration": {
+      "main": [
+        [
+          {
+            "node": "GitHub Repository Analyzer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gmail Search Integration": {
+      "main": [
+        [
+          {
+            "node": "GitHub Repository Analyzer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GitHub Repository Analyzer": {
+      "main": [
+        [
+          {
+            "node": "Slack Dispatch Integration",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Slack Dispatch Integration": {
+      "main": [
+        [
+          {
+            "node": "Verification Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

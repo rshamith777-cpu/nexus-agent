@@ -1,0 +1,162 @@
+@font-face {
+  font-family: 'Glitch Goblin';
+  src: url('/fonts/GlitchGoblin.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #06142F;
+    color: #EAF2FF;
+    font-family: 'Glitch Goblin', 'Plus Jakarta Sans', 'Outfit', 'Inter', monospace, sans-serif;
+    letter-spacing: 0.035em;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6, button, nav, input, textarea, select, .font-mono {
+    font-family: 'Glitch Goblin', monospace, sans-serif;
+    letter-spacing: 0.045em;
+  }
+}
+
+.font-glitch {
+  font-family: 'Glitch Goblin', monospace, sans-serif !important;
+  letter-spacing: 0.05em;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #06142F;
+}
+::-webkit-scrollbar-thumb {
+  background: #0B1F4D;
+  border-radius: 3px;
+  border: 1px solid rgba(147, 197, 253, 0.1);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #14315E;
+}
+
+/* Canonical NEXUS Premium Blue Glass Language */
+.nexus-glass-card {
+  background: linear-gradient(145deg, rgba(13, 35, 72, 0.82), rgba(4, 15, 36, 0.90));
+  border: 1px solid rgba(147, 197, 253, 0.16);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 20px 40px -15px rgba(2, 8, 22, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.nexus-watch-btn {
+  background: linear-gradient(145deg, rgba(20, 49, 94, 0.88), rgba(8, 26, 55, 0.94));
+  border: 1px solid rgba(147, 197, 253, 0.22);
+  color: #EAF2FF;
+  backdrop-filter: blur(8px);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nexus-watch-btn:hover {
+  background: linear-gradient(145deg, rgba(28, 65, 122, 0.95), rgba(12, 36, 75, 0.98));
+  border-color: rgba(147, 197, 253, 0.4);
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.25);
+}
+
+/* Circular Play Button */
+.nexus-play-btn {
+  background: rgba(11, 31, 77, 0.65);
+  border: 1px solid rgba(147, 197, 253, 0.3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nexus-play-btn:hover {
+  background: rgba(37, 99, 235, 0.8);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: scale(1.08);
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.5);
+}
+
+/* Primary High-Contrast CTA */
+.nexus-primary-cta {
+  background: #FFFFFF;
+  color: #071225;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 30px -5px rgba(37, 99, 235, 0.3);
+}
+.nexus-primary-cta:hover {
+  background: #F8FAFC;
+  transform: translateY(-1px);
+  box-shadow: 0 14px 35px -5px rgba(56, 189, 248, 0.4);
+}
+.nexus-primary-cta .arrow-box {
+  background: #0B1F4D;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nexus-primary-cta:hover .arrow-box {
+  transform: translateX(2px);
+  background: #2563EB;
+}
+
+/* Background Blue Overlays and Vignettes */
+.nexus-cinematic-overlay {
+  background-color: rgba(4, 18, 48, 0.20);
+  background-image: 
+    radial-gradient(circle at 50% 25%, rgba(37, 99, 235, 0.18) 0%, transparent 60%),
+    radial-gradient(circle at 80% 80%, rgba(56, 189, 248, 0.12) 0%, transparent 50%);
+}
+
+.nexus-vignette-top {
+  background: linear-gradient(to bottom, rgba(6, 20, 47, 0.85) 0%, rgba(6, 20, 47, 0.4) 40%, transparent 100%);
+}
+
+.nexus-vignette-bottom {
+  background: linear-gradient(to top, rgba(6, 20, 47, 0.95) 0%, rgba(6, 20, 47, 0.5) 45%, transparent 100%);
+}
+
+.nexus-vignette-radial {
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(6, 20, 47, 0.6) 100%);
+}
+
+/* Headline Reveal Utilities */
+.headline-container {
+  overflow: hidden;
+}
+
+.line-one {
+  color: #FFFFFF;
+  display: block;
+}
+
+.line-two {
+  color: rgba(191, 219, 254, 0.86);
+  display: block;
+}
+
+/* General Glass Panel Compatibility */
+.glass-panel {
+  background: rgba(8, 24, 52, 0.80);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(147, 197, 253, 0.16);
+}
+
+.glass-panel-active {
+  background: rgba(13, 35, 72, 0.90);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(56, 189, 248, 0.45);
+  box-shadow: 0 0 30px rgba(37, 99, 235, 0.2);
+}
