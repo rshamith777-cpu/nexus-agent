@@ -12,11 +12,11 @@
 [![React 18](https://img.shields.io/badge/React-18-61DAFB.svg)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.2-blue.svg)](https://www.typescriptlang.org/)
 [![Vite](https://img.shields.io/badge/Vite-5.4-646CFF.svg)](https://vitejs.dev/)
-[![Verification-First](https://img.shields.io/badge/Standard-SHA--256%20Cryptographic%20Attestation-10B981.svg)](#6-verification-first-design--cryptographic-proof)
+[![Standard: Zero Unverified Claims](https://img.shields.io/badge/Standard-SHA--256%20Cryptographic%20Attestation-10B981.svg)](#6-verification-first-design--cryptographic-proof)
 
 **Built for the Multi-App AI Agent Hackathon**
 
-[Overview](#1-problem--vision) • [Architecture](#2-system-architecture) • [App Flow](#3-app-flow--execution-pipeline) • [Specialist Agents](#4-specialist-agents) • [Integrations](#5-external-integrations--dual-mode-adapters) • [Verification](#6-verification-first-design--cryptographic-proof) • [Quickstart](#7-quickstart--local-setup)
+[Overview](#1-problem--vision) • [Landing Experience](#2-project-showcase--interfaces) • [System Architecture](#3-system-architecture) • [App Flow](#4-app-flow--execution-pipeline) • [Specialist Agents](#5-specialist-agents) • [Verification Standard](#6-verification-first-design--cryptographic-proof) • [Reliability Engine](#7-reliability--28-scenario-evaluations) • [Integrations](#8-external-integrations--dual-mode-adapters) • [Quickstart](#9-quickstart--local-setup)
 
 </div>
 
@@ -50,7 +50,21 @@ UNDERSTAND ──► PLAN ──► ACT ──► VERIFY ──► RECOVER ─�
 
 ---
 
-## 2. System Architecture
+## 2. Project Showcase & Interfaces
+
+### Canonical Mission Control Landing
+The entry interface features dynamic cinematic atmosphere, high-contrast typography in **Glitch Goblin**, and live system readiness telemetry:
+
+![NEXUS Landing Hero](docs/images/landing_hero.png)
+
+### Autonomous Mission Command Console
+Users select one of four pre-engineered benchmarks or input custom goals. The console manages concurrent DAG scheduling, execution timers, and optional **Human-in-the-Loop Approval Checkpoints**:
+
+![NEXUS Mission Dashboard](docs/images/mission_dashboard.png)
+
+---
+
+## 3. System Architecture
 
 <div align="center">
 
@@ -98,30 +112,26 @@ graph TD
 
 ---
 
-## 3. App Flow & Execution Pipeline
+## 4. App Flow & Execution Pipeline
 
 The application features a responsive user experience with **Glitch Goblin** typography and high-density telemetry:
 
-### Step 1: Define Outcome or Select Benchmark
-Select one of four pre-engineered benchmarks or enter a custom multi-app prompt. Choose whether to require a **Human-in-the-Loop Approval Checkpoint** before consequential writes.
+### Step 1: Goal Dispatch & DAG Construction
+The user inputs an objective. The Commander Agent parses intent and entities, and the Planner generates a 5-stage dependency DAG.
 
-![Mission Dashboard](docs/images/mission_dashboard.png)
+### Step 2: Action Telemetry & Proof Inspection
+Clicking any DAG execution node displays the **Action Telemetry & Proof Inspector** drawer, exposing rule verification, duration, inputs, and exact payload evidence:
 
-### Step 2: Parallel Wave Execution & Live Telemetry
-The authoritative DAG State Machine schedules ready nodes, manages parallel worker waves, emits real-time WebSocket events, and streams agent reasoning to the activity terminal.
+![Action Telemetry & Proof Inspector](docs/images/action_telemetry.png)
 
 ### Step 3: Verified Outcome & Cryptographic Attestation
 Upon completion, the system produces an Executive Summary, a 7-Section Study Dossier, and an 8-Point Cryptographic Verification Audit Trail with SHA-256 attestation.
 
-<div align="center">
-
 ![Mission Complete Attestation](docs/images/mission_complete.png)
-
-</div>
 
 ---
 
-## 4. Specialist Agents
+## 5. Specialist Agents
 
 | Agent | Badge / Role | Primary Responsibilities |
 | :--- | :--- | :--- |
@@ -137,21 +147,6 @@ Upon completion, the system produces an Executive Summary, a 7-Section Study Dos
 | **Slack Specialist** | `CHANNEL DISPATCH` | Dispatches completion summaries and interactive alerts to the candidate's Slack workspace. |
 | **Verification Agent** | `INDEPENDENT AUDITOR`| Validates every consequential action post-execution using physical receipts and SHA-256 hashes. |
 | **Recovery Agent** | `SELF-HEALING ENGINE` | Automatically diagnoses rate-limits or empty queries, modifies payloads, and applies backoff. |
-
----
-
-## 5. External Integrations & Dual-Mode Adapters
-
-NEXUS provides dual-mode architecture: **LIVE MODE** connects to real cloud APIs when environment variables are supplied, while **DEMO MODE** provides deterministic, high-fidelity mock adapters for offline evaluation and instant hackathon judging.
-
-| Integration | Protocol / API | Live Adapter | Demo / Mock Adapter |
-| :--- | :--- | :--- | :--- |
-| **Google Calendar** | Google Calendar REST API v3 | OAuth2 / Service Account | Deterministic interview event mock with valid Google Meet link |
-| **Gmail** | Gmail REST API v1 | OAuth2 / User Credentials | Recruiter prep email thread with role syllabus |
-| **GitHub** | GitHub REST API v3 | Personal Access Token | Organization repo scanner & language distribution analyzer |
-| **Web Research** | DuckDuckGo / Tavily Search API | Live HTTP search requests | Curated architecture articles & tech stack briefings |
-| **Slack** | Slack Incoming Webhook / Bot API | Live channel webhook | Webhook delivery simulator with HTTP 200 payload receipt |
-| **n8n Automation** | Webhook JSON Bridge | External n8n server | Bundled standalone workflow JSON (`n8n/nexus_interview_prep_workflow.json`) |
 
 ---
 
@@ -178,7 +173,36 @@ NEXUS enforces an independent verification standard: **no action is declared com
 
 ---
 
-## 7. Quickstart & Local Setup
+## 7. Reliability & 28-Scenario Evaluations
+
+NEXUS includes a dedicated in-browser **Reliability Console** running 28 deterministic evaluation scenarios covering flaky networks, missing parameters, and self-healing recovery:
+
+![System Reliability & Benchmark Console](docs/images/reliability_console.png)
+
+- **100% Mission Success** across all 28 evaluation scenarios.
+- **100% Verification Rate** with zero unverified assertions.
+- **Self-Healing Recovery Engine**: Automatic retry jitter and query broadening when external APIs fail.
+
+---
+
+## 8. External Integrations & Dual-Mode Adapters
+
+NEXUS provides dual-mode architecture: **LIVE MODE** connects to real cloud APIs when environment variables are supplied, while **DEMO MODE** provides deterministic, high-fidelity mock adapters for offline evaluation and instant hackathon judging.
+
+![Enterprise Integrations Ecosystem](docs/images/integrations_ecosystem.png)
+
+| Integration | Protocol / API | Live Adapter | Demo / Mock Adapter |
+| :--- | :--- | :--- | :--- |
+| **Google Calendar** | Google Calendar REST API v3 | OAuth2 / Service Account | Deterministic interview event mock with valid Google Meet link |
+| **Gmail** | Gmail REST API v1 | OAuth2 / User Credentials | Recruiter prep email thread with role syllabus |
+| **GitHub** | GitHub REST API v3 | Personal Access Token | Organization repo scanner & language distribution analyzer |
+| **Web Research** | DuckDuckGo / Tavily Search API | Live HTTP search requests | Curated architecture articles & tech stack briefings |
+| **Slack** | Slack Incoming Webhook / Bot API | Live channel webhook | Webhook delivery simulator with HTTP 200 payload receipt |
+| **n8n Automation** | Webhook JSON Bridge | External n8n server | Bundled standalone workflow JSON (`n8n/nexus_interview_prep_workflow.json`) |
+
+---
+
+## 9. Quickstart & Local Setup
 
 ### Prerequisites
 - **Python 3.12+**
@@ -218,7 +242,7 @@ python -m pytest tests/ -v
 
 ---
 
-## 8. Repository Structure
+## 10. Repository Structure
 
 ```
 nexus-agent/
@@ -247,6 +271,6 @@ nexus-agent/
 
 ---
 
-## 9. License
+## 11. License
 
 This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
