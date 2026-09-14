@@ -33,3 +33,7 @@ Thumbs.db
 # Sensitive Environment Variables (keep .env.example)
 .env
 nexus-backend/.env
+
+# Generated runtime mission artifacts
+nexus-backend/app/artifacts/briefings/acme_interview_briefing_mission_*.md
+

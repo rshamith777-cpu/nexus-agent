@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Play, ArrowRight, Menu, X, ShieldCheck, Sparkles, CheckCircle2 } from 'lucide-react';
+import { InteractiveBackground } from './InteractiveBackground';
 
 interface VantageLandingProps {
   onLaunchMission: () => void;
@@ -23,36 +24,8 @@ export const VantageLanding: React.FC<VantageLandingProps> = ({
 
   return (
     <div className="relative min-h-screen w-full overflow-hidden bg-[#06142F] text-[#EAF2FF] flex flex-col justify-between selection:bg-[#2563EB] selection:text-white">
-      {/* 1. Full-Screen Background Video & Cinematic Blue Atmosphere */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
-        {/* Background Video with proper fallback */}
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="w-full h-full object-cover object-center opacity-65 scale-105 transition-opacity duration-1000"
-          poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 900'%3E%3Crect fill='%2306142F' width='1600' height='900'/%3E%3Cpath d='M0,450 Q400,300 800,450 T1600,450' fill='none' stroke='%230B1F4D' stroke-width='2'/%3E%3C/svg%3E"
-        >
-          {/* High-fidelity abstract flowing cinematic tech loop */}
-          <source
-            src="https://cdn.pixabay.com/video/2020/05/25/40149-425170425_large.mp4"
-            type="video/mp4"
-          />
-        </video>
-
-        {/* Subtle Blue Cinematic Overlay */}
-        <div className="absolute inset-0 nexus-cinematic-overlay" />
-
-        {/* Deep Navy Top Vignette */}
-        <div className="absolute top-0 inset-x-0 h-48 nexus-vignette-top" />
-
-        {/* Deep Navy Bottom Vignette */}
-        <div className="absolute bottom-0 inset-x-0 h-72 nexus-vignette-bottom" />
-
-        {/* Radial Vignette */}
-        <div className="absolute inset-0 nexus-vignette-radial" />
-      </div>
+      {/* 1. Interactive 3D Neural Mesh, Perspective Radar Grid & Mission Control Atmosphere */}
+      <InteractiveBackground initialMode="hybrid" />
 
       {/* 2. Top Header Navigation */}
       <header className="relative z-30 w-full px-6 sm:px-10 md:px-14 py-6 md:py-8 flex items-center justify-between">

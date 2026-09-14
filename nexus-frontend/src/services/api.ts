@@ -50,7 +50,17 @@ export interface Integration {
   type: string;
   configured: boolean;
   status: string;
+  masked_value?: string;
   description: string;
+  env_var?: string;
+  placeholder?: string;
+}
+
+export interface TestIntegrationResult {
+  success: boolean;
+  latency_ms?: number;
+  mode: string;
+  message: string;
 }
 
 export interface EvaluationResult {
@@ -124,6 +134,36 @@ export async function getMission(missionId: string): Promise<Mission> {
 export async function getIntegrations(): Promise<Integration[]> {
   const res = await fetch(`${API_BASE}/integrations`);
   if (!res.ok) throw new Error('Failed to fetch integrations');
+  return res.json();
+}
+
+export async function configureIntegration(id: string, value: string): Promise<{ success: boolean; message: string; integrations: Integration[] }> {
+  const res = await fetch(`${API_BASE}/integrations/configure`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ id, value })
+  });
+  if (!res.ok) throw new Error('Failed to configure integration');
+  return res.json();
+}
+
+export async function disconnectIntegration(id: string): Promise<{ success: boolean; message: string; integrations: Integration[] }> {
+  const res = await fetch(`${API_BASE}/integrations/disconnect`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ id })
+  });
+  if (!res.ok) throw new Error('Failed to disconnect integration');
+  return res.json();
+}
+
+export async function testIntegration(id: string, value?: string): Promise<TestIntegrationResult> {
+  const res = await fetch(`${API_BASE}/integrations/test`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ id, value: value || '' })
+  });
+  if (!res.ok) throw new Error('Failed to test integration');
   return res.json();
 }
 
